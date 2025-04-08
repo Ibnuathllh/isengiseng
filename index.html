@@ -11,7 +11,7 @@
       text-align: center;
       padding-top: 100px;
       margin: 0;
-      overflow-x: hidden;
+      overflow: hidden;
     }
 
     button {
@@ -74,38 +74,23 @@
       to { opacity: 1; transform: scale(1); }
     }
 
-    .floating-love {
+    .emoji {
       position: fixed;
-      bottom: -50px;
-      left: 50%;
-      font-size: 30px;
-      animation: floatUp 5s infinite ease-in-out;
-      color: #ff66b2;
-      opacity: 0.8;
+      font-size: 24px;
+      animation: floatDown 5s linear infinite;
       z-index: 9999;
+      pointer-events: none;
     }
 
-    @keyframes floatUp {
-      0% { bottom: -50px; opacity: 0; }
-      50% { opacity: 1; }
-      100% { bottom: 100%; opacity: 0; }
-    }
-
-    .falling-bunga {
-      position: fixed;
-      top: -50px;
-      left: 20%;
-      font-size: 28px;
-      animation: fallDown 6s infinite ease-in;
-      color: #ff99cc;
-      opacity: 0.9;
-      z-index: 9999;
-    }
-
-    @keyframes fallDown {
-      0% { top: -50px; opacity: 0; }
-      30% { opacity: 1; }
-      100% { top: 100%; opacity: 0; }
+    @keyframes floatDown {
+      0% {
+        transform: translateY(-100px);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
     }
   </style>
 </head>
@@ -127,9 +112,6 @@
     </div>
   </div>
 
-  <div class="floating-love">❤️</div>
-  <div class="falling-bunga">🌸</div>
-
   <script>
     function showPopup() {
       document.getElementById("popup").style.display = "flex";
@@ -138,6 +120,27 @@
     function hidePopup() {
       document.getElementById("popup").style.display = "none";
     }
+
+    // Efek jatuh ❤️ dan 🌸 banyak
+    function createFloatingEmojis() {
+      const emojiArray = ['❤️', '🌸'];
+      for (let i = 0; i < 5; i++) { // Tambah 5 emoji sekaligus
+        const emoji = document.createElement('div');
+        emoji.classList.add('emoji');
+        emoji.innerText = emojiArray[Math.floor(Math.random() * emojiArray.length)];
+        emoji.style.left = Math.random() * 100 + 'vw';
+        emoji.style.top = '-50px';
+        emoji.style.fontSize = Math.random() * 20 + 20 + 'px';
+        document.body.appendChild(emoji);
+
+        setTimeout(() => {
+          emoji.remove();
+        }, 5000);
+      }
+    }
+
+    // Munculkan setiap 200ms
+    setInterval(createFloatingEmojis, 200);
   </script>
 
 </body>
