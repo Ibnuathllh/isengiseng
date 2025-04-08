@@ -74,7 +74,6 @@
       to { opacity: 1; transform: scale(1); }
     }
 
-    /* Love naik */
     .floating-love {
       position: fixed;
       bottom: -50px;
@@ -92,10 +91,51 @@
       100% { bottom: 100%; opacity: 0; }
     }
 
-    /* Bunga jatuh */
     .falling-bunga {
       position: fixed;
       top: -50px;
       left: 20%;
       font-size: 28px;
-      animation: fallDown 6s
+      animation: fallDown 6s infinite ease-in;
+      color: #ff99cc;
+      opacity: 0.9;
+      z-index: 9999;
+    }
+
+    @keyframes fallDown {
+      0% { top: -50px; opacity: 0; }
+      30% { opacity: 1; }
+      100% { top: 100%; opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Hai, Allysa!</h1>
+  <button onclick="showPopup()">Klik aku</button>
+
+  <div id="popup">
+    <div class="popup-content">
+      <p><strong>Allysa, kirim pap dong!</strong></p>
+      <p>Kamu pasti lagi cantik banget hari ini. Aku pengen lihat senyum kamu!</p>
+      <img src="https://i.imgur.com/IiM0U62.jpg" alt="Foto Kita">
+      <br>
+      <button class="close" onclick="hidePopup()">Tutup</button>
+    </div>
+  </div>
+
+  <div class="floating-love">❤️</div>
+  <div class="falling-bunga">🌸</div>
+
+  <script>
+    function showPopup() {
+      document.getElementById("popup").style.display = "flex";
+    }
+
+    function hidePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
