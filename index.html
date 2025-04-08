@@ -11,7 +11,7 @@
       text-align: center;
       padding-top: 100px;
       margin: 0;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
     button {
@@ -74,27 +74,34 @@
       to { opacity: 1; transform: scale(1); }
     }
 
-    .emoji {
+    .floating {
       position: fixed;
-      font-size: 24px;
-      animation: floatDown 5s linear infinite;
+      font-size: 30px;
+      animation: floatUp 5s infinite ease-in-out;
+      opacity: 0.8;
       z-index: 9999;
-      pointer-events: none;
     }
 
-    @keyframes floatDown {
-      0% {
-        transform: translateY(-100px);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(110vh);
-        opacity: 0;
-      }
+    @keyframes floatUp {
+      0% { bottom: -50px; opacity: 0; }
+      50% { opacity: 1; }
+      100% { bottom: 100%; opacity: 0; }
     }
+
+    /* Love & Bunga posisi random */
+    .floating:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .floating:nth-child(2) { left: 30%; animation-delay: 1s; }
+    .floating:nth-child(3) { left: 50%; animation-delay: 2s; }
+    .floating:nth-child(4) { left: 70%; animation-delay: 3s; }
+    .floating:nth-child(5) { left: 90%; animation-delay: 4s; }
   </style>
 </head>
 <body>
+
+  <audio autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    Browser kamu tidak mendukung audio.
+  </audio>
 
   <h1>Hai, Allysa!</h1>
   <button onclick="showPopup()">Klik aku</button>
@@ -112,6 +119,13 @@
     </div>
   </div>
 
+  <!-- Banyak elemen love dan bunga -->
+  <div class="floating" style="bottom: -50px;">❤️</div>
+  <div class="floating" style="bottom: -50px;">🌸</div>
+  <div class="floating" style="bottom: -50px;">❤️</div>
+  <div class="floating" style="bottom: -50px;">🌸</div>
+  <div class="floating" style="bottom: -50px;">❤️</div>
+
   <script>
     function showPopup() {
       document.getElementById("popup").style.display = "flex";
@@ -120,28 +134,7 @@
     function hidePopup() {
       document.getElementById("popup").style.display = "none";
     }
-
-    // Efek jatuh ❤️ dan 🌸 banyak
-    function createFloatingEmojis() {
-      const emojiArray = ['❤️', '🌸'];
-      for (let i = 0; i < 5; i++) { // Tambah 5 emoji sekaligus
-        const emoji = document.createElement('div');
-        emoji.classList.add('emoji');
-        emoji.innerText = emojiArray[Math.floor(Math.random() * emojiArray.length)];
-        emoji.style.left = Math.random() * 100 + 'vw';
-        emoji.style.top = '-50px';
-        emoji.style.fontSize = Math.random() * 20 + 20 + 'px';
-        document.body.appendChild(emoji);
-
-        setTimeout(() => {
-          emoji.remove();
-        }, 5000);
-      }
-    }
-
-    // Munculkan setiap 200ms
-    setInterval(createFloatingEmojis, 200);
   </script>
 
 </body>
-</html>
+  </html>
