@@ -21,7 +21,6 @@
       border-radius: 12px;
       cursor: pointer;
       font-size: 18px;
-      margin: 10px;
       transition: background-color 0.3s;
     }
 
@@ -50,7 +49,7 @@
       animation: fadeIn 0.4s ease;
     }
 
-    video {
+    video, iframe {
       width: 100%;
       border-radius: 12px;
       margin-top: 10px;
@@ -75,33 +74,37 @@
       to { opacity: 1; transform: scale(1); }
     }
 
-    .floating {
+    .floating-love, .falling-bunga {
       position: fixed;
-      font-size: 30px;
-      opacity: 0.8;
+      font-size: 28px;
+      opacity: 0.9;
       z-index: 9999;
       animation: floatUp 5s infinite ease-in-out;
     }
 
     .floating-love {
+      bottom: -50px;
+      left: 10%;
       color: #ff66b2;
     }
 
-    .floating-bunga {
+    .falling-bunga {
+      top: -50px;
+      left: 70%;
       color: #ff99cc;
       animation: fallDown 6s infinite ease-in;
     }
 
     @keyframes floatUp {
-      0% { bottom: -50px; left: 10%; opacity: 0; }
+      0% { bottom: -50px; opacity: 0; }
       50% { opacity: 1; }
-      100% { bottom: 100%; left: 90%; opacity: 0; }
+      100% { bottom: 100%; opacity: 0; }
     }
 
     @keyframes fallDown {
-      0% { top: -50px; left: 20%; opacity: 0; }
+      0% { top: -50px; opacity: 0; }
       30% { opacity: 1; }
-      100% { top: 100%; left: 80%; opacity: 0; }
+      100% { top: 100%; opacity: 0; }
     }
   </style>
 </head>
@@ -109,34 +112,21 @@
 
   <h1>Untuk Allysa</h1>
   <button onclick="showPopup()">Klik aku</button>
-  <button onclick="document.getElementById('bgMusic').play()">Putar Lagu</button>
 
   <div id="popup">
     <div class="popup-content">
       <p><strong>Allysa, kirim pap dong!</strong></p>
       <p>Kamu pasti lagi cantik banget hari ini. Aku pengen lihat senyum kamu!</p>
-      <video controls>
-        <source src="https://drive.google.com/uc?export=download&id=1Ti0_yR8b6PXlUM33CgjXfU6_bt0Bz6qp" type="video/mp4">
-        Browser kamu tidak mendukung video.
-      </video>
+      <!-- Ganti foto jadi video YouTube -->
+      <iframe width="300" height="200" src="https://www.youtube.com/embed/5UHJbWbuim0?autoplay=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <br>
       <button class="close" onclick="hidePopup()">Tutup</button>
     </div>
   </div>
 
-  <!-- Musik -->
-  <audio id="bgMusic" loop>
-    <source src="https://ia801607.us.archive.org/24/items/raim-laode-komang-official-lyric-video/Raim%20Laode%20-%20Komang%20%28Official%20Lyric%20Video%29.mp3" type="audio/mpeg">
-    Browser kamu tidak mendukung audio.
-  </audio>
-
-  <!-- Banyak bunga dan love -->
-  <div class="floating floating-love" style="bottom: 0; left: 20%;">❤️</div>
-  <div class="floating floating-love" style="bottom: 10px; left: 40%;">❤️</div>
-  <div class="floating floating-love" style="bottom: 30px; left: 60%;">❤️</div>
-  <div class="floating floating-bunga" style="top: 0; left: 25%;">🌸</div>
-  <div class="floating floating-bunga" style="top: 20px; left: 50%;">🌸</div>
-  <div class="floating floating-bunga" style="top: 40px; left: 75%;">🌸</div>
+  <!-- Efek bunga dan love -->
+  <div class="floating-love">❤️</div>
+  <div class="falling-bunga">🌸</div>
 
   <script>
     function showPopup() {
