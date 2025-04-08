@@ -49,7 +49,7 @@
       animation: fadeIn 0.4s ease;
     }
 
-    video, iframe {
+    video, audio {
       width: 100%;
       border-radius: 12px;
       margin-top: 10px;
@@ -117,8 +117,19 @@
     <div class="popup-content">
       <p><strong>Allysa, kirim pap dong!</strong></p>
       <p>Kamu pasti lagi cantik banget hari ini. Aku pengen lihat senyum kamu!</p>
-      <!-- Ganti foto jadi video YouTube -->
-      <iframe width="300" height="200" src="https://www.youtube.com/embed/5UHJbWbuim0?autoplay=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+      <!-- Video kamu -->
+      <video controls>
+        <source src="https://drive.google.com/uc?export=download&id=1Ti0_yR8b6PXlUM33CgjXfU6_bt0Bz6qp" type="video/mp4">
+        Browser kamu tidak mendukung video.
+      </video>
+
+      <!-- Lagu Komang -->
+      <audio controls>
+        <source src="https://files.catbox.moe/abcd123.mp3" type="audio/mp3">
+        Browser kamu tidak mendukung audio.
+      </audio>
+
       <br>
       <button class="close" onclick="hidePopup()">Tutup</button>
     </div>
